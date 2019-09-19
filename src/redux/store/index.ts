@@ -1,4 +1,4 @@
-import todoReducer from "../reducers/todoReducer";
+import todoReducer from "../reducers/hueldataReducer";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 
