@@ -1,12 +1,12 @@
-import { getTodosSuccess } from "./actioncreators";
-import { IGetTodosSuccessAction } from "./actionTypes";
-import data from "../data.json";
+import { getHuelDataSuccess } from "./actioncreators";
+import { IGetHuelDataSuccessAction } from "./actionTypes";
+import data from "../hueldata.json";
 
-export const getTodos = () => {
-  return (dispatch: (arg0: IGetTodosSuccessAction) => void) => {
+export const getHuelData = () => {
+  return (dispatch: (arg0: IGetHuelDataSuccessAction) => void) => {
     const response = data;
     if (response.status === 200) {
-      dispatch(getTodosSuccess(data.todos));
+      dispatch(getHuelDataSuccess(data.powders, data.boosts));
     } else {
       console.log("there's been an error");
       // dispatch error action
