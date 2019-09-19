@@ -1,0 +1,8 @@
+.appName {
+  color: black;
+  font-size: 56px;
+  text-transform: uppercase;
+  position: fixed;
+  top: 0px;
+  left: 30px;
+}

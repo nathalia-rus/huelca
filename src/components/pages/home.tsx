@@ -1,6 +1,7 @@
 import React from "react";
 
 // import Button from "../atoms/button";
+
 import { getHuelData } from "../../redux/actions/actions";
 import { connect } from "react-redux";
 import {
@@ -34,7 +35,6 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
   render() {
     return (
       <div>
-        <h1>Home Page</h1>
         <p>
           This website allows you to create todos and keep track of your to-do
           list :) :)
