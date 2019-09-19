@@ -1,19 +1,27 @@
 import React from "react";
 
 // import Button from "../atoms/button";
-import { getTodos } from "../../redux/actions/actions";
+import { getHuelData } from "../../redux/actions/actions";
 import { connect } from "react-redux";
-import { IAppProps, IAppState, ITodo } from "../../redux/interface";
+import { IAppProps, IAppState, IBoost, IPowder } from "../../redux/interface";
 
 export class HomePage extends React.Component<IAppProps, IAppState> {
   state = {
     isLoading: false
   };
 
-  todoList = (list: ITodo[]) => {
+  renderBoosts = (list: IBoost[]) => {
     if (list.length > 0) {
-      return list.map((i: ITodo, index: any) => {
-        return <div key={index}>{i.todo}</div>;
+      return list.map((i: IBoost, index: any) => {
+        return <div key={index}>{i.flavour}</div>;
+      });
+    }
+  };
+
+  renderPowders = (list: IPowder[]) => {
+    if (list.length > 0) {
+      return list.map((i: IPowder, index: any) => {
+        return <div key={index}>{i.flavour}</div>;
       });
     }
   };
@@ -26,24 +34,27 @@ export class HomePage extends React.Component<IAppProps, IAppState> {
           This website allows you to create todos and keep track of your to-do
           list :) :)
         </p>
-        {console.log(this.props.todos)}
-        <button type="button" onClick={() => this.props.getTodos()}>
+        {console.log(this.props.huelData)}
+        <button type="button" onClick={() => this.props.getHuelData()}>
           Test redux action
         </button>
 
-        <p> Those are your to dos :</p>
-        {this.todoList(this.props.todos)}
+        <p> Those are your to powders :</p>
+        {this.renderPowders(this.props.huelData.powders)}
+
+        <p> Those are your to boosts :</p>
+        {this.renderBoosts(this.props.huelData.boosts)}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: any) => ({
-  todos: state.todos
+  huelData: state.huelData
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  getTodos: () => dispatch(getTodos())
+  getHuelData: () => dispatch(getHuelData())
 });
 
 export default connect(

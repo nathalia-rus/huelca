@@ -37,8 +37,8 @@ export interface IHueldata {
 // AppProps
 
 export interface IAppProps {
-  todos: ITodo[];
-  getTodos: () => Promise<any>;
+  huelData: IHueldata;
+  getHuelData: () => Promise<any>;
 }
 
 // AppState
