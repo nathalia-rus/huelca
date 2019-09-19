@@ -1,4 +1,7 @@
-import { GET_HUEL_DATA_SUCCESS, todoActionTypes } from "../actions/actionTypes";
+import {
+  GET_HUEL_DATA_SUCCESS,
+  huelDataActionTypes
+} from "../actions/actionTypes";
 
 import { IHueldata } from "../interface";
 
@@ -9,13 +12,13 @@ const initialState: IHueldata = {
 
 export function hueldataReducer(
   state = initialState,
-  action: todoActionTypes
+  action: huelDataActionTypes
 ): IHueldata {
   switch (action.type) {
     case GET_HUEL_DATA_SUCCESS:
       return {
-        powders: action.powders.map((powderdata: any) => powderdata),
-        boosts: action.boosts.map((boostdata: any) => boostdata)
+        powders: action.powders.map(powderdata => powderdata),
+        boosts: action.boosts.map(boostdata => boostdata)
       };
 
     default:

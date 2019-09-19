@@ -12,4 +12,4 @@ export interface IGetHuelDataSuccessAction {
 
 // cen be useful for the store:
 
-export type todoActionTypes = IGetHuelDataSuccessAction;
+export type huelDataActionTypes = IGetHuelDataSuccessAction;

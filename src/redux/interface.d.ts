@@ -34,10 +34,11 @@ export interface IHueldata {
   boosts: IBoost[];
 }
 
-// AppProps
+// HuelDataProps
 
-export interface IAppProps {
-  huelData: IHueldata;
+export interface IHuelDataProps {
+  powders: IPowder[];
+  boosts: IBoost[];
   getHuelData: () => Promise<any>;
 }
 

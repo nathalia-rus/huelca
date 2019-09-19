@@ -3,9 +3,14 @@ import React from "react";
 // import Button from "../atoms/button";
 import { getHuelData } from "../../redux/actions/actions";
 import { connect } from "react-redux";
-import { IAppProps, IAppState, IBoost, IPowder } from "../../redux/interface";
+import {
+  IHuelDataProps,
+  IAppState,
+  IBoost,
+  IPowder
+} from "../../redux/interface";
 
-export class HomePage extends React.Component<IAppProps, IAppState> {
+export class HomePage extends React.Component<IHuelDataProps, IAppState> {
   state = {
     isLoading: false
   };
@@ -34,23 +39,24 @@ export class HomePage extends React.Component<IAppProps, IAppState> {
           This website allows you to create todos and keep track of your to-do
           list :) :)
         </p>
-        {console.log(this.props.huelData)}
+        {console.log(this.props)}
         <button type="button" onClick={() => this.props.getHuelData()}>
           Test redux action
         </button>
 
         <p> Those are your to powders :</p>
-        {this.renderPowders(this.props.huelData.powders)}
+        {this.renderPowders(this.props.powders)}
 
         <p> Those are your to boosts :</p>
-        {this.renderBoosts(this.props.huelData.boosts)}
+        {this.renderBoosts(this.props.boosts)}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: any) => ({
-  huelData: state.huelData
+  powders: state.powders,
+  boosts: state.boosts
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({

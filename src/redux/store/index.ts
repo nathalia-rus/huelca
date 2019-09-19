@@ -1,4 +1,4 @@
-import todoReducer from "../reducers/hueldataReducer";
+import hueldataReducer from "../reducers/hueldataReducer";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 
@@ -9,7 +9,7 @@ export default function configureStore() {
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
   const store = createStore(
-    todoReducer,
+    hueldataReducer,
     composeWithDevTools(middleWareEnhancer)
   );
 
