@@ -2,8 +2,6 @@ import React from "react";
 
 // import Button from "../atoms/button";
 
-import { powdersList, boostsList } from "../data";
-
 import { getHuelData } from "../../redux/actions/actions";
 import { connect } from "react-redux";
 import { IHuelDataProps, IAppState } from "../../redux/interface";
@@ -23,7 +21,9 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
       <div style={styles}>
         <h2> Welcome Hueler! </h2>
 
-        <p> Enter your daily Huel Log :</p>
+        <h3> Enter your daily Huel Log </h3>
+
+        {/* {console.log("state", this.props.powders)} */}
 
         <Dropdown />
 
@@ -37,8 +37,7 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
 }
 
 const mapStateToProps = (state: any) => ({
-  powders: state.powders,
-  boosts: state.boosts
+  powders: state.powders
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({

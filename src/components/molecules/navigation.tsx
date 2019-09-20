@@ -14,7 +14,7 @@ const Navigation: React.SFC<INavigationProps> = props => (
     <nav className="navigation">
       {props.menuitems.map((i: String, index: Number) => {
         return (
-          <Link to={"/"}>
+          <Link to={"/"} key={`${index}`}>
             <MenuItem menuitem={i} />
           </Link>
         );
