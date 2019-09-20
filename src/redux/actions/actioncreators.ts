@@ -1,11 +1,13 @@
-import { IPowder, IBoost } from "../interface";
+import { IPowder, IBoost, IFormData } from "../interface";
 
 import {
   GET_HUEL_DATA_SUCCESS,
-  IGetHuelDataSuccessAction
+  IGetHuelDataSuccessAction,
+  ISubmitFormDataSuccessAction,
+  SUBMIT_FORM_DATA_SUCCESS
 } from "./actionTypes";
 
-// acctions creators
+// actions creators
 
 export function getHuelDataSuccess(
   powders: IPowder[],
@@ -15,5 +17,16 @@ export function getHuelDataSuccess(
     type: GET_HUEL_DATA_SUCCESS,
     powders: powders,
     boosts: boosts
+  };
+}
+
+// actions creators
+
+export function submitFormDataSuccess(
+  data: IFormData
+): ISubmitFormDataSuccessAction {
+  return {
+    type: SUBMIT_FORM_DATA_SUCCESS,
+    data: data
   };
 }

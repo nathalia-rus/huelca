@@ -35,13 +35,13 @@ export interface IHuelDataProps {
 
 // form data object props
 
-export interface IformData {
+export interface IFormData {
   powder: String;
   boost: String;
   scoops: number;
   portions: number;
   boostNumber: number;
-  submitted: Boolean;
+  submitted: boolean;
   calories: number;
 }
 
