@@ -23,6 +23,8 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
 
         <h3> Enter your daily Huel Log </h3>
 
+        {/* {console.log("state", this.props.powders)} */}
+
         <Dropdown />
 
         {/* 
@@ -35,8 +37,7 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
 }
 
 const mapStateToProps = (state: any) => ({
-  powders: state.powders,
-  boosts: state.boosts
+  powders: state.powders
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({

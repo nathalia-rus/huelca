@@ -1,12 +1,3 @@
-// to do object
-
-export interface ITodo {
-  id: Number;
-  todo: String;
-  completed: Boolean;
-  priority: String;
-}
-
 // single huel powder object
 
 export interface IPowder {
@@ -40,6 +31,18 @@ export interface IHuelDataProps {
   powders: IPowder[];
   boosts: IBoost[];
   getHuelData: () => Promise<any>;
+}
+
+// form data object props
+
+export interface IformData {
+  powder: String;
+  boost: String;
+  scoops: number;
+  portions: number;
+  boostNumber: number;
+  submitted: Boolean;
+  calories: number;
 }
 
 // AppState

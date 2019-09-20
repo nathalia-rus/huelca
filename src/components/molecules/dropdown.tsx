@@ -20,20 +20,26 @@ const field = {
 type IformDataState = {
   powder: String;
   boost: String;
-  scoops: Number;
-  portions: Number;
-  boostNumber: Number;
-  submitted: Boolean;
+  scoops: number;
+  portions: number;
+  boostNumber: number;
+  submitted: boolean;
+  calories: number;
 };
 export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
-  formDataState: IformDataState = {
+  state: IformDataState = {
     powder: "Please select",
     boost: "Please select",
     scoops: 0,
     portions: 0,
     boostNumber: 0,
-    submitted: false
+    submitted: false,
+    calories: 0
   };
+
+  componentDidMount() {
+    console.log("starting state", this.state);
+  }
 
   boostsList = (list: IBoost[]) => {
     if (list.length > 0) {
@@ -63,107 +69,126 @@ export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
     }
   };
 
-  public handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
-
     let value = event.currentTarget.value;
     let name = event.currentTarget.name;
-    this.formDataState = {
-      ...this.formDataState,
+    this.setState({
+      ...this.state,
       [name]: value
-    };
-    console.log("inside", this.formDataState);
+    });
   };
 
-  handleSubmit: React.ReactEventHandler<HTMLInputElement> = e => {
-    console.log("inside", this.formDataState);
-    e.preventDefault();
-    this.formDataState = {
-      ...this.formDataState,
-      submitted: true
-    };
+  handleSubmit = (event: React.MouseEvent<HTMLElement>): void => {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      submitted: true,
+      calories: 80
+    });
   };
 
-  handleClear: React.ReactEventHandler<HTMLInputElement> = e => {
-    e.preventDefault();
-    this.formDataState = {
+  handleClear = (event: React.MouseEvent<HTMLElement>): void => {
+    event.preventDefault();
+    this.setState({
       powder: "Please select",
       boost: "Please select",
       scoops: 0,
       portions: 0,
       boostNumber: 0,
-      submitted: false
-    };
+      submitted: false,
+      calories: 0
+    });
   };
 
   render() {
     return (
       <div style={styles}>
-        {console.log("INSIDE COMP", this.formDataState)}
-        <div className="form">
-          <p style={field}> Please enter your powder: </p>
-          <select
-            name="powder"
-            style={field}
-            onChange={this.handleChange}
-            defaultValue={`${this.formDataState.powder}`}
-          >
-            <option defaultValue="Select powder">Select powder:</option>
-            {this.powdersList(this.props.powders)}
-          </select>
-          <p style={field}> Please enter the number of scoops:</p>
-          <select
-            style={field}
-            name="scoops"
-            defaultValue={`${this.formDataState.scoops}`}
-          >
-            <option defaultValue="Please enter number of scoops">
-              Number of scoops per portion (meal):
-            </option>
-            {this.enumList([
-              0,
-              0.5,
-              1,
-              1.5,
-              2,
-              2.5,
-              3,
-              3.5,
-              4,
-              4.5,
-              5,
-              5.5,
-              6,
-              6.5,
-              7
-            ])}
-          </select>
-          <p style={field}> Please enter the number of portions (meals):</p>
-          <select
-            style={field}
-            name="portions"
-            defaultValue={`${this.formDataState.portions}`}
-          >
-            {this.enumList([0, 1, 2, 3, 4, 5])}
-          </select>
-          <p style={field}> Please enter the number of boosts:</p>
-          <div>
+        <form>
+          <div className="form">
+            <p style={field}> Please enter your powder: </p>
             <select
-              name="boost"
+              name="powder"
               style={field}
-              defaultValue={`${this.formDataState.boost}`}
+              onChange={this.handleChange}
+              value={`${this.state.powder}`}
             >
-              <option defaultValue="Select boost">Select boost:</option>
-              {this.boostsList(this.props.boosts)}
+              <option defaultValue="Select powder">Select powder:</option>
+              {this.powdersList(this.props.powders)}
             </select>
-            <button style={{ marginLeft: "20px" }} type="button">
-              Add boost?
+            <p>{`${this.state.powder}`}</p>
+
+            <p style={field}> Please enter the number of scoops:</p>
+            <select
+              style={field}
+              name="scoops"
+              value={`${this.state.scoops}`}
+              onChange={this.handleChange}
+            >
+              <option defaultValue="Please enter number of scoops">
+                Number of scoops per portion (meal):
+              </option>
+              {this.enumList([
+                0,
+                0.5,
+                1,
+                1.5,
+                2,
+                2.5,
+                3,
+                3.5,
+                4,
+                4.5,
+                5,
+                5.5,
+                6,
+                6.5,
+                7
+              ])}
+            </select>
+            <p style={field}> Please enter the number of portions (meals):</p>
+            <select
+              style={field}
+              name="portions"
+              value={`${this.state.portions}`}
+              onChange={this.handleChange}
+            >
+              {this.enumList([0, 1, 2, 3, 4, 5])}
+            </select>
+            <p style={field}> Please enter the number of boosts:</p>
+            <div>
+              <select
+                name="boost"
+                style={field}
+                value={`${this.state.boost}`}
+                onChange={this.handleChange}
+              >
+                <option defaultValue="Select boost">Select boost:</option>
+                {this.boostsList(this.props.boosts)}
+              </select>
+              <button style={{ marginLeft: "20px" }} type="button">
+                Add boost?
+              </button>
+            </div>
+            <button
+              style={{ marginTop: "30px" }}
+              type="button"
+              onClick={this.handleSubmit}
+            >
+              Submit
             </button>
+
+            <button
+              style={{ marginTop: "30px" }}
+              type="button"
+              onClick={this.handleClear}
+            >
+              Reset
+            </button>
+            {this.state.submitted === true && <div> SUBMITTED </div>}
           </div>
-          <button style={{ marginTop: "30px" }} type="button">
-            Submit
-          </button>
-        </div>
+        </form>
+        <h1> Your calories : {`${this.state.calories}`}</h1>
       </div>
     );
   }
