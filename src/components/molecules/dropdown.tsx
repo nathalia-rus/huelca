@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { IHuelDataProps } from "../../redux/interface";
 import "./styles.css";
 import { IPowder, IBoost } from "../../redux/interface";
@@ -17,17 +17,16 @@ const field = {
   marginTop: "20px"
 };
 
-type IState = {
+type IformDataState = {
   powder: String;
   boost: String;
   scoops: Number;
   portions: Number;
-  boostNumber: 0;
+  boostNumber: Number;
   submitted: Boolean;
 };
-
-export class Dropdown extends React.Component<IHuelDataProps, IState> {
-  state: IState = {
+export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
+  formDataState: IformDataState = {
     powder: "Please select",
     boost: "Please select",
     scoops: 0,
@@ -64,53 +63,50 @@ export class Dropdown extends React.Component<IHuelDataProps, IState> {
     }
   };
 
-  // handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   this.setState({ [event.target.name]: event.target.value });
-  // };
-
-  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  public handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
-    alert("changing state");
-    let value = event.target.value;
-    let name = event.target.name;
-    this.setState({
-      ...this.state,
+
+    let value = event.currentTarget.value;
+    let name = event.currentTarget.name;
+    this.formDataState = {
+      ...this.formDataState,
       [name]: value
-    });
+    };
+    console.log("inside", this.formDataState);
   };
 
   handleSubmit: React.ReactEventHandler<HTMLInputElement> = e => {
+    console.log("inside", this.formDataState);
     e.preventDefault();
-    this.setState({
-      ...this.state,
+    this.formDataState = {
+      ...this.formDataState,
       submitted: true
-    });
+    };
   };
 
   handleClear: React.ReactEventHandler<HTMLInputElement> = e => {
     e.preventDefault();
-    alert("State being reset!");
-    this.setState({
+    this.formDataState = {
       powder: "Please select",
       boost: "Please select",
       scoops: 0,
       portions: 0,
       boostNumber: 0,
       submitted: false
-    });
+    };
   };
 
   render() {
     return (
       <div style={styles}>
-        {console.log(this.state)}
+        {console.log("INSIDE COMP", this.formDataState)}
         <div className="form">
           <p style={field}> Please enter your powder: </p>
           <select
             name="powder"
             style={field}
-            value={`${this.state.powder}`}
-            onChange={e => this.handleChange}
+            onChange={this.handleChange}
+            defaultValue={`${this.formDataState.powder}`}
           >
             <option defaultValue="Select powder">Select powder:</option>
             {this.powdersList(this.props.powders)}
@@ -119,9 +115,9 @@ export class Dropdown extends React.Component<IHuelDataProps, IState> {
           <select
             style={field}
             name="scoops"
-            defaultValue={`${this.state.scoops}`}
+            defaultValue={`${this.formDataState.scoops}`}
           >
-            <option defaultValue="0">
+            <option defaultValue="Please enter number of scoops">
               Number of scoops per portion (meal):
             </option>
             {this.enumList([
@@ -146,17 +142,16 @@ export class Dropdown extends React.Component<IHuelDataProps, IState> {
           <select
             style={field}
             name="portions"
-            defaultValue={`${this.state.portions}`}
+            defaultValue={`${this.formDataState.portions}`}
           >
-            <option value="0">Number of portions (meals):</option>
-            {this.enumList([1, 2, 3, 4, 5])}
+            {this.enumList([0, 1, 2, 3, 4, 5])}
           </select>
           <p style={field}> Please enter the number of boosts:</p>
           <div>
             <select
               name="boost"
               style={field}
-              defaultValue={`${this.state.boost}`}
+              defaultValue={`${this.formDataState.boost}`}
             >
               <option defaultValue="Select boost">Select boost:</option>
               {this.boostsList(this.props.boosts)}
