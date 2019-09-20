@@ -23,18 +23,14 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
       <div style={styles}>
         <h2> Welcome Hueler! </h2>
 
-        <p> Those are your to powders :</p>
+        <p> Enter your daily Huel Log :</p>
 
         <Dropdown />
 
-        {powdersList(this.props.powders)}
-
-        <p> Those are your to boosts :</p>
-        {boostsList(this.props.boosts)}
-
+        {/* 
         <button type="button" onClick={() => this.props.getHuelData()}>
           Test redux action
-        </button>
+        </button> */}
       </div>
     );
   }

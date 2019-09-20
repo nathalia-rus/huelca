@@ -24,6 +24,14 @@ const powdersList = (list: IPowder[]) => {
   }
 };
 
+const enumList = (list: Number[]) => {
+  if (list.length > 0) {
+    return list.map((i: Number, index: any) => {
+      return <option value={`${index}`}>{`${i}`}</option>;
+    });
+  }
+};
+
 const Dropdown: React.SFC<IHuelDataProps> = props => (
   <div style={styles} className="dropdown">
     <select>
@@ -32,9 +40,20 @@ const Dropdown: React.SFC<IHuelDataProps> = props => (
     </select>
 
     <select>
+      <option value="0">Number of scoops per portion (meal):</option>
+      {enumList([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7])}
+    </select>
+
+    <select>
+      <option value="0">Number of portions (meals):</option>
+      {enumList([1, 2, 3, 4, 5])}
+    </select>
+
+    <select>
       <option value="0">Select boost:</option>
       {boostsList(props.boosts)}
     </select>
+    <button type="button"> Add boost</button>
   </div>
 );
 
