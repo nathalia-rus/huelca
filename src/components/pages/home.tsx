@@ -2,53 +2,39 @@ import React from "react";
 
 // import Button from "../atoms/button";
 
+import { powdersList, boostsList } from "../data";
+
 import { getHuelData } from "../../redux/actions/actions";
 import { connect } from "react-redux";
-import {
-  IHuelDataProps,
-  IAppState,
-  IBoost,
-  IPowder
-} from "../../redux/interface";
+import { IHuelDataProps, IAppState } from "../../redux/interface";
+
+import Dropdown from "../molecules/dropdown";
+const styles = {
+  marginTop: "20vh"
+};
 
 export class HomePage extends React.Component<IHuelDataProps, IAppState> {
   state = {
     isLoading: false
   };
 
-  renderBoosts = (list: IBoost[]) => {
-    if (list.length > 0) {
-      return list.map((i: IBoost, index: any) => {
-        return <div key={index}>{i.flavour}</div>;
-      });
-    }
-  };
-
-  renderPowders = (list: IPowder[]) => {
-    if (list.length > 0) {
-      return list.map((i: IPowder, index: any) => {
-        return <div key={index}>{i.flavour}</div>;
-      });
-    }
-  };
-
   render() {
     return (
-      <div>
-        <p>
-          This website allows you to create todos and keep track of your to-do
-          list :) :)
-        </p>
-        {console.log(this.props)}
+      <div style={styles}>
+        <h2> Welcome Hueler! </h2>
+
+        <p> Those are your to powders :</p>
+
+        <Dropdown />
+
+        {powdersList(this.props.powders)}
+
+        <p> Those are your to boosts :</p>
+        {boostsList(this.props.boosts)}
+
         <button type="button" onClick={() => this.props.getHuelData()}>
           Test redux action
         </button>
-
-        <p> Those are your to powders :</p>
-        {this.renderPowders(this.props.powders)}
-
-        <p> Those are your to boosts :</p>
-        {this.renderBoosts(this.props.boosts)}
       </div>
     );
   }
