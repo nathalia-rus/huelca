@@ -15,7 +15,7 @@ const initialState: IFormData = {
   calories: 0
 };
 
-export function formDataReducer(
+export function formData(
   state = initialState,
   action: formDataActionTypes
 ): IFormData {
@@ -36,4 +36,4 @@ export function formDataReducer(
   }
 }
 
-export default formDataReducer;
+export default formData;

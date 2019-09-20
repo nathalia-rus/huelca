@@ -1,9 +1,9 @@
 import * as React from "react";
-import { IHuelDataProps } from "../../redux/interface";
+import { IAppProps, IFormData } from "../../redux/interface";
 import "./styles.css";
 import { IPowder, IBoost } from "../../redux/interface";
 import { connect } from "react-redux";
-import { getHuelData } from "../../redux/actions/actions";
+import { getHuelData, submitFormData } from "../../redux/actions/actions";
 
 // import { Formik } from "formik";
 
@@ -26,7 +26,7 @@ type IformDataState = {
   submitted: boolean;
   calories: number;
 };
-export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
+export class Dropdown extends React.Component<IAppProps, IformDataState> {
   state: IformDataState = {
     powder: "Please select",
     boost: "Please select",
@@ -86,11 +86,11 @@ export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
       submitted: true,
       calories: 80
     });
+    this.props.submitFormData(this.state);
   };
 
   handleClear = (event: React.MouseEvent<HTMLElement>): void => {
-    event.preventDefault();
-    this.setState({
+    let resetState = {
       powder: "Please select",
       boost: "Please select",
       scoops: 0,
@@ -98,7 +98,10 @@ export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
       boostNumber: 0,
       submitted: false,
       calories: 0
-    });
+    };
+    event.preventDefault();
+    this.setState(resetState);
+    this.props.submitFormData(resetState);
   };
 
   render() {
@@ -195,12 +198,14 @@ export class Dropdown extends React.Component<IHuelDataProps, IformDataState> {
 }
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  getHuelData: () => dispatch(getHuelData())
+  getHuelData: () => dispatch(getHuelData()),
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
 });
 
 const mapStateToProps = (state: any) => ({
-  powders: state.powders,
-  boosts: state.boosts
+  formData: state.formData,
+  boosts: state.hueldata.boosts,
+  powders: state.hueldata.powders
 });
 
 export default connect(

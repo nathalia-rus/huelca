@@ -27,9 +27,11 @@ export interface IHueldata {
 
 // HuelDataProps
 
-export interface IHuelDataProps {
+export interface IAppProps {
   powders: IPowder[];
   boosts: IBoost[];
+  formData: IFormData;
+  submitFormData: (IFormData) => Promise<any>;
   getHuelData: () => Promise<any>;
 }
 
