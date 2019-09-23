@@ -23,3 +23,15 @@ export const submitFormData = (data: IFormData) => {
     dispatch(submitFormDataSuccess(data));
   };
 };
+
+// alternative syntax:
+
+// export const submitFormData = (data: IFormData) => {
+//   return (
+//     dispatch: (
+//       arg: ISubmitFormDataSuccessAction
+//     ) => ISubmitFormDataSuccessAction
+//   ) => {
+//     dispatch(submitFormDataSuccess(data));
+//   };
+// };
