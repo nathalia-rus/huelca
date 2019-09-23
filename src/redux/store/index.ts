@@ -1,6 +1,7 @@
-import hueldataReducer from "../reducers/hueldataReducer";
+import hueldata from "../reducers/hueldataReducer";
+import formData from "../reducers/formDataReducer";
 import thunk from "redux-thunk";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -8,8 +9,13 @@ export default function configureStore() {
   const middlewares = [thunk];
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
+  const rootReducer = combineReducers({
+    hueldata,
+    formData
+  });
+
   const store = createStore(
-    hueldataReducer,
+    rootReducer,
     composeWithDevTools(middleWareEnhancer)
   );
 

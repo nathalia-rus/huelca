@@ -2,11 +2,11 @@ import React from "react";
 import AppName from "./components/atoms/appName";
 import Navigation from "./components/molecules/navigation";
 import { connect } from "react-redux";
-import { IHuelDataProps, IAppState } from "./redux/interface";
+import { IAppProps, IAppState, IFormData } from "./redux/interface";
 import "./App.css";
-import { getHuelData } from "./redux/actions/actions";
+import { getHuelData, submitFormData } from "./redux/actions/actions";
 
-export class App extends React.Component<IHuelDataProps, IAppState> {
+export class App extends React.Component<IAppProps, IAppState> {
   componentDidMount() {
     return this.props.getHuelData();
   }
@@ -25,12 +25,14 @@ export class App extends React.Component<IHuelDataProps, IAppState> {
 }
 
 const mapStateToProps = (state: any) => ({
-  powders: state.powders,
-  boosts: state.boosts
+  powders: state.hueldata.powders,
+  boosts: state.hueldata.boosts,
+  formData: state.formdata
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  getHuelData: () => dispatch(getHuelData())
+  getHuelData: () => dispatch(getHuelData()),
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
 });
 
 export default connect(

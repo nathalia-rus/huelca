@@ -9,7 +9,7 @@ export interface INavigationProps {
   navigationurl: String[];
 }
 
-const Navigation: React.SFC<INavigationProps> = props => (
+const Navigation: React.FunctionComponent<INavigationProps> = props => (
   <Router>
     <nav className="navigation">
       {props.menuitems.map((i: String, index: Number) => {

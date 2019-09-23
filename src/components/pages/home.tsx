@@ -2,16 +2,16 @@ import React from "react";
 
 // import Button from "../atoms/button";
 
-import { getHuelData } from "../../redux/actions/actions";
+import { getHuelData, submitFormData } from "../../redux/actions/actions";
 import { connect } from "react-redux";
-import { IHuelDataProps, IAppState } from "../../redux/interface";
+import { IAppProps, IAppState, IFormData } from "../../redux/interface";
 
 import Dropdown from "../molecules/dropdown";
 const styles = {
   marginTop: "20vh"
 };
 
-export class HomePage extends React.Component<IHuelDataProps, IAppState> {
+export class HomePage extends React.Component<IAppProps, IAppState> {
   state = {
     isLoading: false
   };
@@ -23,25 +23,28 @@ export class HomePage extends React.Component<IHuelDataProps, IAppState> {
 
         <h3> Enter your daily Huel Log </h3>
 
-        {/* {console.log("state", this.props.powders)} */}
-
         <Dropdown />
 
         {/* 
         <button type="button" onClick={() => this.props.getHuelData()}>
           Test redux action
         </button> */}
+
+        {console.log(this.props)}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: any) => ({
-  powders: state.powders
+  formData: state.formData,
+  boosts: state.hueldata.boosts,
+  powders: state.hueldata.powders
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  getHuelData: () => dispatch(getHuelData())
+  getHuelData: () => dispatch(getHuelData()),
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
 });
 
 export default connect(

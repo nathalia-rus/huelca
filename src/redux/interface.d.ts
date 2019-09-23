@@ -27,21 +27,23 @@ export interface IHueldata {
 
 // HuelDataProps
 
-export interface IHuelDataProps {
+export interface IAppProps {
   powders: IPowder[];
   boosts: IBoost[];
+  formData: IFormData;
+  submitFormData: (IFormData) => Promise<any>;
   getHuelData: () => Promise<any>;
 }
 
 // form data object props
 
-export interface IformData {
+export interface IFormData {
   powder: String;
   boost: String;
   scoops: number;
   portions: number;
   boostNumber: number;
-  submitted: Boolean;
+  submitted: boolean;
   calories: number;
 }
 

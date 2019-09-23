@@ -10,7 +10,7 @@ const initialState: IHueldata = {
   boosts: []
 };
 
-export function hueldataReducer(
+export function hueldata(
   state = initialState,
   action: huelDataActionTypes
 ): IHueldata {
@@ -26,4 +26,4 @@ export function hueldataReducer(
   }
 }
 
-export default hueldataReducer;
+export default hueldata;
