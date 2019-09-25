@@ -46,7 +46,7 @@ export function fetchHuelDataEpic(): IFetchHuelDataEpic {
 export function fetchHuelDataEpicError(error: any): IFetchHuelDataEpicError {
   return {
     type: FETCH_HUEL_DATA_EPIC_ERROR,
-    payload: error
+    error: error
   };
 }
 

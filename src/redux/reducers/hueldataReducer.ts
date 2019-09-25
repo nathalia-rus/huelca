@@ -1,24 +1,57 @@
 import {
   GET_HUEL_DATA_SUCCESS,
-  huelDataActionTypes
+  huelDataActionTypes,
+  epicActionTypes,
+  FETCH_HUEL_DATA_EPIC,
+  FETCH_HUEL_DATA_EPIC_ERROR,
+  FETCH_HUEL_DATA_EPIC_SUCCESS
 } from "../modules/actions/actionTypes";
 
 import { IHueldata } from "../interface";
 
 const initialState: IHueldata = {
   powders: [],
-  boosts: []
+  boosts: [],
+  loading: false,
+  error: null
 };
 
 export function hueldata(
   state = initialState,
-  action: huelDataActionTypes
+  action: huelDataActionTypes | epicActionTypes
 ): IHueldata {
   switch (action.type) {
+    // action from redux-thunk:
     case GET_HUEL_DATA_SUCCESS:
       return {
         powders: action.powders.map(powderdata => powderdata),
-        boosts: action.boosts.map(boostdata => boostdata)
+        boosts: action.boosts.map(boostdata => boostdata),
+        loading: false,
+        error: null
+      };
+    // action from redux-observable:
+    case FETCH_HUEL_DATA_EPIC:
+      return {
+        powders: [],
+        boosts: [],
+        loading: true,
+        error: null
+      };
+
+    case FETCH_HUEL_DATA_EPIC_ERROR:
+      return {
+        powders: [],
+        boosts: [],
+        loading: false,
+        error: action.error
+      };
+
+    case FETCH_HUEL_DATA_EPIC_SUCCESS:
+      return {
+        powders: action.powders.map(powderdata => powderdata),
+        boosts: action.boosts.map(boostdata => boostdata),
+        loading: false,
+        error: null
       };
 
     default:

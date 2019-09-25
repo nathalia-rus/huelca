@@ -34,7 +34,7 @@ export interface IFetchHuelDataEpicSuccess {
 
 export interface IFetchHuelDataEpicError {
   type: typeof FETCH_HUEL_DATA_EPIC_ERROR;
-  payload: any;
+  error: any;
 }
 
 // useful when more than like 10 actions for the store::

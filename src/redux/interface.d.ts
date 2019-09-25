@@ -23,6 +23,8 @@ export interface IBoost {
 export interface IHueldata {
   powders: IPowder[];
   boosts: IBoost[];
+  loading: boolean;
+  error: null;
 }
 
 // HuelDataProps
