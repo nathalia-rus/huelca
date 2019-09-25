@@ -2,9 +2,10 @@ import { IPowder, IBoost, IFormData } from "../../interface";
 
 export const GET_HUEL_DATA_SUCCESS = "GET_HUEL_DATA_SUCCESS";
 export const SUBMIT_FORM_DATA_SUCCESS = "SUBMIT_FORM_DATA_SUCCESS";
+// epic types
+export const FETCH_HUEL_DATA_EPIC = "FETCH_HUEL_DATA_EPIC";
 export const FETCH_HUEL_DATA_EPIC_SUCCESS = "FETCH_HUEL_DATA_EPIC_SUCCESS";
 export const FETCH_HUEL_DATA_EPIC_ERROR = "FETCH_HUEL_DATA_EPIC_ERROR";
-export const FETCH_HUEL_DATA_EPIC = "FETCH_HUEL_DATA_EPIC";
 
 // action creator interfaces
 
@@ -43,5 +44,6 @@ export type huelDataActionTypes = IGetHuelDataSuccessAction;
 export type formDataActionTypes = ISubmitFormDataSuccessAction;
 
 export type epicActionTypes =
+  | IFetchHuelDataEpic
   | IFetchHuelDataEpicError
   | IFetchHuelDataEpicSuccess;
