@@ -8,7 +8,7 @@ import data from "../../../../hueldata.json";
 
 type Action = ActionType<typeof actions>;
 
-const fetchHuelDataEpicTs: Epic<Action, Action, IHueldata> = (action$, store) =>
+const fetchHuelDataEpicTS: Epic<Action, Action, IHueldata> = (action$, store) =>
   action$.pipe(
     filter(
       isActionOf(actions.huel_data_ts),
@@ -19,4 +19,4 @@ const fetchHuelDataEpicTs: Epic<Action, Action, IHueldata> = (action$, store) =>
     )
   );
 
-export default [fetchHuelDataEpicTs];
+export default [fetchHuelDataEpicTS];

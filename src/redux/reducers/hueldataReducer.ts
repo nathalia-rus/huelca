@@ -7,7 +7,12 @@ import {
   FETCH_HUEL_DATA_EPIC_SUCCESS
 } from "../modules/actions/actionTypes";
 
+import * as actions from "../modules/actions/typesafe/actions/actioncreators";
+
 import { IHueldata } from "../interface";
+import { ActionType, getType } from "typesafe-actions";
+
+type Action = ActionType<typeof actions>;
 
 export const initialState: IHueldata = {
   powders: [],
@@ -15,6 +20,30 @@ export const initialState: IHueldata = {
   loading: false,
   error: null
 };
+
+export function huelTsdata(state = initialState, action: Action): IHueldata {
+  switch (action.type) {
+    case getType(actions.huel_data_ts):
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    case getType(actions.huel_data_ts_error):
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.payload.error
+      });
+    case getType(actions.huel_data_ts_success):
+      return Object.assign({}, state, {
+        powders: action.payload.powders,
+        boosts: action.payload.boosts,
+        loading: false,
+        error: null
+      });
+    default:
+      return state;
+  }
+}
 
 export function hueldata(
   state = initialState,
