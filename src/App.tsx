@@ -6,10 +6,11 @@ import { IAppProps, IAppState, IFormData } from "./redux/interface";
 import "./App.css";
 import { getHuelData, submitFormData } from "./redux/modules/actions/actions";
 import { huel_data_ts } from "./redux/modules/actions/typesafe/actions/actioncreators";
+import { getHuelDataApi } from "./redux/modules/actions/typesafe/service/api";
 
 export class App extends React.Component<IAppProps, IAppState> {
   componentDidMount() {
-    return this.props.getHuelData();
+    return this.props.huel_data_ts();
   }
 
   render() {
