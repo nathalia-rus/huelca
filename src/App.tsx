@@ -4,7 +4,7 @@ import Navigation from "./components/molecules/navigation";
 import { connect } from "react-redux";
 import { IAppProps, IAppState, IFormData } from "./redux/interface";
 import "./App.css";
-import { getHuelData, submitFormData } from "./redux/actions/actions";
+import { getHuelData, submitFormData } from "./redux/modules/actions/actions";
 
 export class App extends React.Component<IAppProps, IAppState> {
   componentDidMount() {

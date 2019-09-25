@@ -1,4 +1,4 @@
-import { IPowder, IBoost, IFormData } from "../interface";
+import { IPowder, IBoost, IFormData } from "../../interface";
 
 import {
   GET_HUEL_DATA_SUCCESS,

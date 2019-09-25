@@ -3,7 +3,10 @@ import { IAppProps, IFormData } from "../../redux/interface";
 import "./styles.css";
 import { IPowder, IBoost } from "../../redux/interface";
 import { connect } from "react-redux";
-import { getHuelData, submitFormData } from "../../redux/actions/actions";
+import {
+  getHuelData,
+  submitFormData
+} from "../../redux/modules/actions/actions";
 
 // import { Formik } from "formik";
 
