@@ -36,7 +36,7 @@ export interface IAppProps {
   submitFormData: (IFormData) => Promise<any>;
   getHuelData: () => Promise<any>;
   fetchHuelDataEpic?: () => Promise<any>;
-  huel_data_ts?: () => Promise<any>;
+  huel_data_ts: () => Promise<any>;
 }
 
 // form data object props

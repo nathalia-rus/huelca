@@ -42,6 +42,7 @@ export class Dropdown extends React.Component<IAppProps, IformDataState> {
 
   componentDidMount() {
     console.log("starting state", this.state);
+    this.props.huel_data_ts();
   }
 
   boostsList = (list: IBoost[]) => {
