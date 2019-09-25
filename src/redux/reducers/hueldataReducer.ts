@@ -34,12 +34,12 @@ export function huelTsdata(state = initialState, action: Action): IHueldata {
         error: action.payload.error
       });
     case getType(actions.huel_data_ts_success):
-      return Object.assign({}, state, {
-        powders: action.payload.powders,
-        boosts: action.payload.boosts,
+      return {
+        powders: action.payload.powders.map(powderdata => powderdata),
+        boosts: action.payload.boosts.map(boostdata => boostdata),
         loading: false,
         error: null
-      });
+      };
     default:
       return state;
   }
@@ -88,4 +88,4 @@ export function hueldata(
   }
 }
 
-export default hueldata;
+export default { hueldata, huelTsdata };
