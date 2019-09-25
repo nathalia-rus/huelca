@@ -9,7 +9,7 @@ import {
 
 import { IHueldata } from "../interface";
 
-const initialState: IHueldata = {
+export const initialState: IHueldata = {
   powders: [],
   boosts: [],
   loading: false,

@@ -1,5 +1,5 @@
 import { createAction } from "typesafe-actions";
-import { IBoost, IPowder } from "../../../interface";
+import { IBoost, IPowder } from "../../../../interface";
 
 import {
   HUEL_DATA_TS,

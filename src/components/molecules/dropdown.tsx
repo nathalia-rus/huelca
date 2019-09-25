@@ -201,8 +201,8 @@ export class Dropdown extends React.Component<IAppProps, IformDataState> {
 
 const mapDispatchToProps = (dispatch: Function) => ({
   getHuelData: () => dispatch(getHuelData()),
-  submitFormData: (data: IFormData) => dispatch(submitFormData(data)),
-  fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
+  // fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
 });
 
 const mapStateToProps = (state: any) => ({
