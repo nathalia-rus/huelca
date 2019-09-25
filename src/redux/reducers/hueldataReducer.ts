@@ -1,7 +1,7 @@
 import {
   GET_HUEL_DATA_SUCCESS,
   huelDataActionTypes
-} from "../actions/actionTypes";
+} from "../modules/actions/actionTypes";
 
 import { IHueldata } from "../interface";
 

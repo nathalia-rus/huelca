@@ -1,7 +1,7 @@
 import {
   SUBMIT_FORM_DATA_SUCCESS,
   formDataActionTypes
-} from "../actions/actionTypes";
+} from "../modules/actions/actionTypes";
 
 import { IFormData } from "../interface";
 
