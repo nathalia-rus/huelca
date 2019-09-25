@@ -1,13 +1,13 @@
 import {
   GET_HUEL_DATA_SUCCESS,
   huelDataActionTypes,
-  epicActionTypes,
+  EpicActionTypes,
   FETCH_HUEL_DATA_EPIC,
   FETCH_HUEL_DATA_EPIC_ERROR,
   FETCH_HUEL_DATA_EPIC_SUCCESS
 } from "../modules/actions/actionTypes";
 
-import { IHueldata } from "../interface";
+import { IHueldata, IPowder, IBoost } from "../interface";
 
 const initialState: IHueldata = {
   powders: [],
@@ -18,7 +18,7 @@ const initialState: IHueldata = {
 
 export function hueldata(
   state = initialState,
-  action: huelDataActionTypes | epicActionTypes
+  action: huelDataActionTypes | EpicActionTypes
 ): IHueldata {
   switch (action.type) {
     // action from redux-thunk:

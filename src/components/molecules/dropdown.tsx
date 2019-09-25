@@ -7,8 +7,7 @@ import {
   getHuelData,
   submitFormData
 } from "../../redux/modules/actions/actions";
-
-// import { Formik } from "formik";
+import { fetchHuelDataEpic } from "../../redux/modules/epics/fetchHuelData";
 
 const styles = {
   width: "100vw",
@@ -202,7 +201,8 @@ export class Dropdown extends React.Component<IAppProps, IformDataState> {
 
 const mapDispatchToProps = (dispatch: Function) => ({
   getHuelData: () => dispatch(getHuelData()),
-  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data)),
+  fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
 });
 
 const mapStateToProps = (state: any) => ({

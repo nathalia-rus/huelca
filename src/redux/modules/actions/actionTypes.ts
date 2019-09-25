@@ -43,7 +43,7 @@ export type huelDataActionTypes = IGetHuelDataSuccessAction;
 
 export type formDataActionTypes = ISubmitFormDataSuccessAction;
 
-export type epicActionTypes =
+export type EpicActionTypes =
   | IFetchHuelDataEpic
   | IFetchHuelDataEpicError
   | IFetchHuelDataEpicSuccess;

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { IAppProps, IAppState, IFormData } from "./redux/interface";
 import "./App.css";
 import { getHuelData, submitFormData } from "./redux/modules/actions/actions";
-import { fetchHuelDataEpic } from "./redux/modules/epics/fetchHuelData";
 
 export class App extends React.Component<IAppProps, IAppState> {
   componentDidMount() {
@@ -33,8 +32,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: Function) => ({
   getHuelData: () => dispatch(getHuelData()),
-  submitFormData: (data: IFormData) => dispatch(submitFormData(data)),
-  fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
 });
 
 export default connect(
