@@ -1,0 +1,3 @@
+export const HUEL_DATA_TS = "HUEL_DATA_TS";
+export const HUEL_DATA_TS_SUCCESS = "HUEL_DATA_TS_SUCCESS";
+export const HUEL_DATA_TS_ERROR = "HUEL_DATA_TS_ERROR";

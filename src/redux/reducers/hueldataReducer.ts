@@ -7,7 +7,7 @@ import {
   FETCH_HUEL_DATA_EPIC_SUCCESS
 } from "../modules/actions/actionTypes";
 
-import { IHueldata, IPowder, IBoost } from "../interface";
+import { IHueldata } from "../interface";
 
 const initialState: IHueldata = {
   powders: [],
