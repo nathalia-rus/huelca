@@ -11,10 +11,10 @@ import {
 import { fetchHuelDataEpicError } from "../actions/actioncreators";
 
 export const fetchHuelDataEpic = action$ => {
+  const response = data;
   return action$.pipe(
     ofType(FETCH_HUEL_DATA_EPIC),
     mergeMap(() => {
-      const response = data;
       mapTo({
         type: FETCH_HUEL_DATA_EPIC_SUCCESS,
         powders: response.powders,
