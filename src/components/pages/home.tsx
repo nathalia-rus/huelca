@@ -2,7 +2,10 @@ import React from "react";
 
 // import Button from "../atoms/button";
 
-import { getHuelData, submitFormData } from "../../redux/actions/actions";
+import {
+  getHuelData,
+  submitFormData
+} from "../../redux/modules/actions/actions";
 import { connect } from "react-redux";
 import { IAppProps, IAppState, IFormData } from "../../redux/interface";
 

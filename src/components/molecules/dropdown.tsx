@@ -3,9 +3,12 @@ import { IAppProps, IFormData } from "../../redux/interface";
 import "./styles.css";
 import { IPowder, IBoost } from "../../redux/interface";
 import { connect } from "react-redux";
-import { getHuelData, submitFormData } from "../../redux/actions/actions";
-
-// import { Formik } from "formik";
+import {
+  getHuelData,
+  submitFormData
+} from "../../redux/modules/actions/actions";
+// import { fetchHuelDataEpic } from "../../redux/modules/epics/fetchHuelData";
+import { huel_data_ts } from "../../redux/modules/actions/typesafe/actions/actioncreators";
 
 const styles = {
   width: "100vw",
@@ -39,6 +42,7 @@ export class Dropdown extends React.Component<IAppProps, IformDataState> {
 
   componentDidMount() {
     console.log("starting state", this.state);
+    this.props.huel_data_ts();
   }
 
   boostsList = (list: IBoost[]) => {
@@ -199,7 +203,9 @@ export class Dropdown extends React.Component<IAppProps, IformDataState> {
 
 const mapDispatchToProps = (dispatch: Function) => ({
   getHuelData: () => dispatch(getHuelData()),
-  submitFormData: (data: IFormData) => dispatch(submitFormData(data))
+  submitFormData: (data: IFormData) => dispatch(submitFormData(data)),
+  // fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
+  huel_data_ts: () => dispatch(huel_data_ts())
 });
 
 const mapStateToProps = (state: any) => ({

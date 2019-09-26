@@ -23,6 +23,8 @@ export interface IBoost {
 export interface IHueldata {
   powders: IPowder[];
   boosts: IBoost[];
+  loading: boolean;
+  error: null;
 }
 
 // HuelDataProps
@@ -33,6 +35,8 @@ export interface IAppProps {
   formData: IFormData;
   submitFormData: (IFormData) => Promise<any>;
   getHuelData: () => Promise<any>;
+  fetchHuelDataEpic?: () => Promise<any>;
+  huel_data_ts: () => Promise<any>;
 }
 
 // form data object props

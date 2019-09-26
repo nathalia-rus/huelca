@@ -1,10 +1,12 @@
+// this would be in epics folder if written with redux-observables
+
 import { getHuelDataSuccess, submitFormDataSuccess } from "./actioncreators";
 import {
   IGetHuelDataSuccessAction,
   ISubmitFormDataSuccessAction
 } from "./actionTypes";
-import data from "../hueldata.json";
-import { IFormData } from "../interface";
+import data from "../../hueldata.json";
+import { IFormData } from "../../interface";
 
 export const getHuelData = () => {
   return (dispatch: (arg0: IGetHuelDataSuccessAction) => void) => {
