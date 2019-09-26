@@ -1,14 +1,8 @@
 import * as React from "react";
-import { IAppProps, IFormData } from "../../redux/interface";
+// import { IAppProps, IFormData } from "../../redux/interface";
 import "./styles.css";
-import { IPowder, IBoost } from "../../redux/interface";
+// import { IPowder, IBoost } from "../../redux/interface";
 import { connect } from "react-redux";
-import {
-  getHuelData,
-  submitFormData
-} from "../../redux/modules/actions/actions";
-// import { fetchHuelDataEpic } from "../../redux/modules/epics/fetchHuelData";
-import { huel_data_ts } from "../../redux/modules/actions/typesafe/actions/actioncreators";
 
 const styles = {
   width: "100vw",
@@ -202,16 +196,16 @@ export class Dropdown extends React.Component<IAppProps, IformDataState> {
 }
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  getHuelData: () => dispatch(getHuelData()),
-  submitFormData: (data: IFormData) => dispatch(submitFormData(data)),
-  // fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
-  huel_data_ts: () => dispatch(huel_data_ts())
+  // getHuelData: () => dispatch(getHuelData()),
+  // submitFormData: (data: IFormData) => dispatch(submitFormData(data)),
+  // // fetchHuelDataEpic: () => dispatch(fetchHuelDataEpic())
+  // huel_data_ts: () => dispatch(huel_data_ts())
 });
 
 const mapStateToProps = (state: any) => ({
-  formData: state.formData,
-  boosts: state.hueldata.boosts,
-  powders: state.hueldata.powders
+  // formData: state.formData,
+  // boosts: state.hueldata.boosts,
+  // powders: state.hueldata.powders
 });
 
 export default connect(
